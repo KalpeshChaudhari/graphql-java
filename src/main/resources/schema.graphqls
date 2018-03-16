@@ -1,11 +1,27 @@
-type Link {
+type User {
     id: ID!
-    url: String!
-    description: String
+    name: String!
+    score: Int
+    level: Int
+    ranking: Ranking
+    learnPath: LearnPath
+}
+
+type Ranking{
+    eventsWon: Int
+    challengesWon: Int
+}
+
+type LearnPath{
+    completed: Int
+    ongoing: Int
+    left: Int
 }
 
 type Query {
-  allLinks: [Link]
+  allUsers: [User]
+  user(id: ID!): User
+  userByName(name: String!): User
 }
 
 schema {
@@ -14,5 +30,5 @@ schema {
 }
 
 type Mutation {
-  createLink(url: String!, description: String!): Link
+  createUser(name: String!, score: Int, level: Int): User
 }

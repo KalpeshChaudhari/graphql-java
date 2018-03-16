@@ -4,15 +4,15 @@ import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
 public class Mutation implements GraphQLRootResolver {
 
-    private final LinkRepository linkRepository;
+    private final UserRepository userRepository;
 
-    public Mutation(LinkRepository linkRepository) {
-        this.linkRepository = linkRepository;
+    public Mutation(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public Link createLink(String url, String description) {
-        Link newLink = new Link(url, description);
-        linkRepository.saveLink(newLink);
-        return newLink;
+    public User createUser(String name, Integer score, Integer level) {
+        User newUser = new User(name, score, level);
+        userRepository.saveUser(newUser);
+        return newUser;
     }
 }
