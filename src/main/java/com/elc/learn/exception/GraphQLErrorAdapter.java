@@ -1,4 +1,9 @@
-package net.ameizi.exception;
+/* ***************************************************************************
+ * Copyright 2018 Mindstix, Inc.  All rights reserved.
+ * -- Mindstix Confidential
+ * ***************************************************************************/
+
+package com.elc.learn.exception;
 
 import graphql.ErrorType;
 import graphql.ExceptionWhileDataFetching;

@@ -1,0 +1,28 @@
+type Query {
+    findAllUsers: [User]
+    countUsers: Long!
+    findUserById(id: String!): User
+}
+
+type Mutation {
+    createUser(name: String, score: Int, level: Int) : User
+}
+type User {
+    id: String
+    name: String
+    score: Int
+    level: Int
+    ranking: Ranking
+    learnPath: LearnPath
+}
+
+type Ranking {
+    eventsWon: Int
+    challengesWon: Int
+}
+
+type LearnPath {
+    completed: Int
+    ongoing: Int
+    left: Int
+}

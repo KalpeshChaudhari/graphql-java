@@ -1,4 +1,9 @@
-package net.ameizi.model;
+/* ***************************************************************************
+ * Copyright 2018 Mindstix, Inc.  All rights reserved.
+ * -- Mindstix Confidential
+ * ***************************************************************************/
+
+package com.elc.learn.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

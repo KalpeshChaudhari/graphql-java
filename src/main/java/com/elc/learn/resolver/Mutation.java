@@ -1,13 +1,22 @@
-package net.ameizi.resolver;
+/* ***************************************************************************
+ * Copyright 2018 Mindstix, Inc.  All rights reserved.
+ * -- Mindstix Confidential
+ * ***************************************************************************/
+
+package com.elc.learn.resolver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
-import net.ameizi.exception.BookNotFoundException;
-import net.ameizi.model.Author;
-import net.ameizi.model.Book;
-import net.ameizi.repository.AuthorRepository;
-import net.ameizi.repository.BookRepository;
+import com.elc.learn.exception.BookNotFoundException;
+import com.elc.learn.model.Author;
+import com.elc.learn.model.Book;
+import com.elc.learn.model.LearnPath;
+import com.elc.learn.model.Ranking;
+import com.elc.learn.model.User;
+import com.elc.learn.repository.AuthorRepository;
+import com.elc.learn.repository.BookRepository;
+import com.elc.learn.repository.UserRepository;
 
 public class Mutation implements GraphQLMutationResolver {
 
@@ -16,10 +25,14 @@ public class Mutation implements GraphQLMutationResolver {
     
     @Autowired
     private AuthorRepository authorRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
     }
 
     public Author newAuthor(String firstName, String lastName) {
@@ -53,5 +66,14 @@ public class Mutation implements GraphQLMutationResolver {
         book.setPageCount(pageCount);
         bookRepository.save(book);
         return book;
+    }
+    
+    public User createUser(String name, int score, int level){
+        User user=new User();
+        user.setLevel(level);
+        user.setName(name);
+        user.setScore(score);
+        userRepository.save(user);
+        return user;
     }
 }
