@@ -12,7 +12,7 @@ RUN mvn install
 FROM openjdk:8-jre-alpine
 MAINTAINER Amit Mujawar <amit.mujawar@mindstix.com>
 WORKDIR /app
-COPY --from=build /app/target/graphql-java-1.0.jar /app
-ENTRYPOINT ["java", "-jar", "graphql-java-1.0.jar"]
+COPY --from=build /app/target/graphql-example-1.0.jar /app
+ENTRYPOINT ["java", "-jar", "graphql-example-1.0.jar"]
 
 EXPOSE 8090
