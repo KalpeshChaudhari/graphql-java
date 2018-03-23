@@ -12,17 +12,4 @@ type User {
     name: String
     score: Int
     level: Int
-    ranking: Ranking
-    learnPath: LearnPath
-}
-
-type Ranking {
-    eventsWon: Int
-    challengesWon: Int
-}
-
-type LearnPath {
-    completed: Int
-    ongoing: Int
-    left: Int
 }

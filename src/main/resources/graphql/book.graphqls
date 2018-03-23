@@ -8,8 +8,17 @@ type Book {
 
 extend type Query {
     findAllBooks: [Book]!
+	allBooks(filter: BookFilter): [Book]
+	allFirstBooks(first: Int): [Book]
     countBooks: Long!
 }
+
+input BookFilter {
+	title_contains: String
+	isbn_contains: String
+	pageCount_equals: Int
+}
+
 
 extend type Mutation {
     newBook(title: String!, isbn: String!, pageCount: Int, author: ID!) : Book!

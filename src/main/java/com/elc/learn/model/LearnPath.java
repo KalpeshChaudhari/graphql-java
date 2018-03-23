@@ -9,22 +9,30 @@ import javax.persistence.Column;
 
 public class LearnPath {
     
-    @Column()
     private int completed;
-    
-    @Column()
+ 
     private int ongoing;
-    
-    @Column()
+
     private int left;
 
-    public LearnPath(int completed, int ongoing, int left) {
+    private User user;
+    
+    public LearnPath(int completed, int ongoing, int left, User user) {
         this.completed = completed;
         this.ongoing = ongoing;
         this.left = left;
+        this.user = user;
     }
 
-    public int getCompleted() {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public int getCompleted() {
         return completed;
     }
 

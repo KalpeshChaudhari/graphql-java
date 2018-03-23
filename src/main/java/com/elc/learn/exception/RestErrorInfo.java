@@ -3,7 +3,7 @@
  * -- Mindstix Confidential
  * ***************************************************************************/
 
-package com.elc.learn.config;
+package com.elc.learn.exception;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.elc.learn.config.AbstractRestHandler;
-import com.elc.learn.config.DataFormatException;
 import com.elc.learn.config.UserService;
+import com.elc.learn.exception.AbstractRestHandler;
+import com.elc.learn.exception.DataFormatException;
 import com.elc.learn.model.User;
 
 import io.swagger.annotations.Api;

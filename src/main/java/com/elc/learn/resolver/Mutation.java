@@ -16,6 +16,8 @@ import com.elc.learn.model.Ranking;
 import com.elc.learn.model.User;
 import com.elc.learn.repository.AuthorRepository;
 import com.elc.learn.repository.BookRepository;
+import com.elc.learn.repository.LearnPathRepository;
+import com.elc.learn.repository.RankingRepository;
 import com.elc.learn.repository.UserRepository;
 
 public class Mutation implements GraphQLMutationResolver {
@@ -29,10 +31,18 @@ public class Mutation implements GraphQLMutationResolver {
     @Autowired
     private UserRepository userRepository;
 
-    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository) {
+    @Autowired
+    private RankingRepository rankingRepository;
+
+    @Autowired
+    private LearnPathRepository learnPathRepository;
+    
+    public Mutation(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository, RankingRepository rankingRepository, LearnPathRepository learnPathRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
         this.userRepository = userRepository;
+        this.rankingRepository = rankingRepository;
+        this.learnPathRepository = learnPathRepository;
     }
 
     public Author newAuthor(String firstName, String lastName) {
@@ -76,4 +86,14 @@ public class Mutation implements GraphQLMutationResolver {
         userRepository.save(user);
         return user;
     }
+    
+    public Ranking createRanking(int eventsWon, int challengesWon, String userId) {
+    	Ranking ranking = new Ranking();
+    	ranking.setUser(new User(userId));
+    	ranking.setEventsWon(eventsWon);
+    	ranking.setChallengesWon(challengesWon);
+    	rankingRepository.save(ranking);
+    	return ranking;
+    }
+    
 }

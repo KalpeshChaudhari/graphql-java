@@ -23,21 +23,19 @@ public class User implements Serializable{
 
     private int level;
 
-    private Ranking ranking;
-    
-    private LearnPath learnPath;
-
     public User(){
-
+    
+    }
+    
+    public User(String id){
+    	this.id = id;
     }
 
-    public User(String id, String name, int score, int level, Ranking ranking, LearnPath learnPath) {
+    public User(String id, String name, int score, int level) {
         this.id = id;
         this.name = name;
         this.score = score;
         this.level = level;
-        this.ranking = ranking;
-        this.learnPath = learnPath;
     }
 
     public User(String name, int score, int level) {
@@ -79,23 +77,6 @@ public class User implements Serializable{
         this.level = level;
     }
 
-    public Ranking getRanking() {
-        return ranking;
-    }
-
-    public void setRanking(Ranking ranking) {
-        this.ranking = ranking;
-    }
-
-    public LearnPath getLearnPath() {
-        return learnPath;
-    }
-
-    public void setLearnPath(LearnPath learnPath) {
-        this.learnPath = learnPath;
-    }
-
-
     @Override
     public String toString() {
         return "User {" +
@@ -103,8 +84,6 @@ public class User implements Serializable{
                 ", name='" + name + '\'' +
                 ", score=" + score + '\'' +
                 ", level=" + level + '\'' +
-                ", Ranking=" + ranking + '\'' +
-                ", LearnPath=" + learnPath +
                 '}';
     }
 }

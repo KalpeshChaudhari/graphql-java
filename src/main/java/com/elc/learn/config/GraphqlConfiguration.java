@@ -15,11 +15,13 @@ import org.springframework.context.annotation.Configuration;
 import com.elc.learn.exception.GraphQLErrorAdapter;
 import com.elc.learn.repository.AuthorRepository;
 import com.elc.learn.repository.BookRepository;
+import com.elc.learn.repository.LearnPathRepository;
+import com.elc.learn.repository.RankingRepository;
 import com.elc.learn.repository.UserRepository;
 import com.elc.learn.resolver.BookResolver;
 import com.elc.learn.resolver.Mutation;
 import com.elc.learn.resolver.Query;
-import com.elc.learn.resolver.UserResolver;
+import com.elc.learn.resolver.RankingResolver;
 
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
@@ -32,6 +34,8 @@ public class GraphqlConfiguration {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
     private UserRepository userRepository;
+    private RankingRepository rankingRepository;
+    private LearnPathRepository learnPathRepository;
 
     @Bean
     public GraphQLErrorHandler errorHandler() {
@@ -65,18 +69,18 @@ public class GraphqlConfiguration {
     }
 
     @Bean
-    public UserResolver userResolver(AuthorRepository authorRepository) {
-        return new UserResolver(authorRepository);
+    public RankingResolver rankingResolver(UserRepository userRepository) {
+        return new RankingResolver(userRepository);
     }
     
     @Bean
-    public Query query(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository) {
-        return new Query(authorRepository, bookRepository, userRepository);
+    public Query query(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository, RankingRepository rankingRepository, LearnPathRepository learnPathRepository) {
+        return new Query(authorRepository, bookRepository, userRepository, rankingRepository, learnPathRepository);
     }
 
     @Bean
-    public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository) {
-        return new Mutation(authorRepository, bookRepository, userRepository);
+    public Mutation mutation(AuthorRepository authorRepository, BookRepository bookRepository, UserRepository userRepository, RankingRepository rankingRepository, LearnPathRepository learnPathRepository) {
+        return new Mutation(authorRepository, bookRepository, userRepository, rankingRepository, learnPathRepository);
     }
 
 }

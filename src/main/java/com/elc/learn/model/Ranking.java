@@ -9,18 +9,30 @@ import javax.persistence.Column;
 
 public class Ranking {
 
-    @Column()
     private int eventsWon;
 
-    @Column()
     private int challengesWon;
 
-    public Ranking(int eventsWon, int challengesWon) {
+    private User user;
+    
+    public Ranking() {
+    }
+    
+    public Ranking(int eventsWon, int challengesWon, User user) {
         this.eventsWon = eventsWon;
         this.challengesWon = challengesWon;
+        this.user = user;
     }
 
-    public int getEventsWon() {
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public int getEventsWon() {
         return eventsWon;
     }
 

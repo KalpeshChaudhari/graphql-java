@@ -3,7 +3,7 @@
  * -- Mindstix Confidential
  * ***************************************************************************/
 
-package com.elc.learn.config;
+package com.elc.learn.exception;
 
 /**
  * For HTTP 404 errros

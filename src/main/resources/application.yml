@@ -4,8 +4,8 @@ spring.jmx:
 spring:
   data:
     mongodb:
-      host: mongo
-      port: 27017
+      host: localhost
+      port: 27015
       database: app1
         
 server:
