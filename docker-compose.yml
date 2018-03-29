@@ -8,7 +8,7 @@ services:
     volumes:
       - ./data/db:/data/db
     ports:
-        - 27017:27017
+        - 27015:27017
     command: mongod --smallfiles --logpath=/dev/null # --quiet
   app:
     restart: always
