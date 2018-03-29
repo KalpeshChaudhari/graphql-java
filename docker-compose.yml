@@ -2,15 +2,16 @@ version: '2'
 services:  
   mongodb:
     image: mongo:3.6
+    container_name: mongo
     ports:
      - 27015:27017
   app:
     restart: always
-    image: amitmindstix/graphql-java:v2
+    image: prashantchintaldockerid/springboot-graphql
     expose:
       - "8090"
     environment:
-      - "spring.data.mongodb.host=mongodb"
+      - "spring.data.mongodb.host=mongo"
     links:
       - mongodb
     depends_on:
